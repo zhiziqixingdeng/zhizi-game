@@ -3,96 +3,94 @@
 #include <unistd.h>
 using namespace std;
 string name;
-int w,r,ans,cnt,a,b;
-struct pai{ 
-	int dian;
-	int zai;
-}p[7];
-struct ji{
-	int dia;
-	int za;
-}rj[7];
-int main(){
-	cout<<"»¶Ó­À´µ½±È´óÐ¡"<<endl;
-	sleep(1);
-	cout<<"ÄãµÄÃû×Ö:";
-	cin>>name;
-	cout<<"ÄãºÃ,"<<name<<",»¶Ó­À´µ½±È´óÐ¡"<<endl;
-	while(1==1){
-		cout<<"¿ªÊ¼ÍæÊäÈë1"<<endl;
-		cin>>w;
-		if(w==1){
-			cout<<"·ÖÅÆÖÐ"<<endl;
-			sleep(1);
-			for(int i=1;i<=6;i++){
-				r=rand()%8+1;
-				p[i].dian=r;
-				p[i].zai=1;
-				r=rand()%8+1;
-				rj[i].dia=r;
-				rj[i].za=1;
-			}
-			cout<<"·ÖÅäÍê³É"<<endl;
-			for(int tt=1;tt<=6;tt++){
-				cout<<"ÇëÊäÈëÄãÒª³öÊ²Ã´"<<endl;
-				a=0;
-				b=0;
-			for(int i=1;i<=6;i++){
-				if(p[i].zai==1){
-					cout<<i<<":"<<p[i].dian<<endl;
-				}
-				else{
-					cout<<i<<":"<<"ÒÑ¾­³öÍê"<<endl;
-				}
-			}
-			cin>>r;
-			if(p[r].zai==0){
-				cout<<"·¸¹æÊÇ°É"<<endl;
-				sleep(1);
-				cout<<"ÔÙ¼û"<<endl;
-				return 0;
-			}
-			else{
-				a=r;
-				p[a].zai=0;
-				cout<<"¶ÔÊÖ³öµÄÅÆ:";
-				for(int i=1;i<=6;i++){
-					if(rj[i].za==1){
-						if(rj[i].dia>a){
-							cout<<rj[i].dia<<endl;
-							b=rj[i].dia;
-							break;
-						}
-					}
-				}
-				if(b==0){
-					cout<<"Òª²»Æð"<<endl;
-					sleep(1);
-					cout<<"ÄãÓ®ÁË"<<endl;
-					ans++;
-				}
-				if(b>a){
-					cout<<"ÄãÊäÁË"<<endl;
-					sleep(1);
-					cnt++;
-				}
-				else{
-					cout<<"ÄãÓ®ÁË"<<endl;
-					ans++; 
-				}
-				sleep(1);
-			}
-			}
-			sleep(1);
-			if(ans>=3){
-				cout<<"ÄãÊ¤ÀûÁË"<<endl;
-			}
-			else{
-				cout<<"ÄãÊäÁË"<<endl;
-			}
-		} 
-		else{
-			cout<<"µÈ´ýÃüÁî"<<endl;
-		}
-	} 
+int w, r, ans, cnt, a, b;
+struct pai {
+    int dian;
+    int zai;
+} p[7];
+struct ji {
+    int dia;
+    int za;
+} rj[7];
+int main() {
+    cout << "æ¬¢è¿Žæ¥åˆ°æ¯”å¤§å°" << endl;
+    sleep(1);
+    cout << "ä½ çš„åå­—:";
+    cin >> name;
+    cout << "ä½ å¥½," << name << ",æ¬¢è¿Žæ¥åˆ°æ¯”å¤§å°" << endl;
+    while (1 == 1) {
+        cout << "å¼€å§‹çŽ©è¾“å…¥1" << endl;
+        cin >> w;
+        if (w == 1) {
+            cout << "åˆ†ç‰Œä¸­" << endl;
+            sleep(1);
+            for (int i = 1; i <= 6; i++) {
+                r = rand() % 8 + 1;
+                p[i].dian = r;
+                p[i].zai = 1;
+            }
+            cout << "åˆ†é…å®Œæˆ" << endl;
+            for (int tt = 1; tt <= 6; tt++) {
+                cout << "è¯·è¾“å…¥ä½ è¦å‡ºä»€ä¹ˆ" << endl;
+                a = 0;
+                b = 0;
+                for (int i = 1; i <= 6; i++) {
+                    if (p[i].zai == 1) {
+                        cout << i << ":" << p[i].dian << endl;
+                    }
+                    else {
+                        cout << i << ":" << "å·²ç»å‡ºå®Œ" << endl;
+                    }
+                }
+                cin >> r;
+                if (r < 1 || r > 6 || p[r].zai == 0) {
+                    cout << "çŠ¯è§„æ˜¯å§" << endl;
+                    sleep(1);
+                    cout << "å†è§" << endl;
+                    return 0;
+                }
+                else {
+                    a = r;
+                    p[a].zai = 0;
+                    cout << "å¯¹æ‰‹å‡ºçš„ç‰Œ:";
+                    for (int i = 1; i <= 6; i++) {
+                        b = rand() % 8 + 1;
+                        if (b < a) {
+                            b = 0;
+                        }
+                        else {
+                            cout << "å¯¹æ‰‹å‡ºäº†:" << b << endl;
+                        }
+                    }
+                    if (b == 0) {
+                        cout << "è¦ä¸èµ·" << endl;
+                        sleep(1);
+                        cout << "ä½ èµ¢äº†" << endl;
+                        ans++;
+                    }
+                    else if (b > a) {
+                        cout << "ä½ è¾“äº†" << endl;
+                        sleep(1);
+                        cnt++;
+                    }
+                    else {
+                        cout << "ä½ èµ¢äº†" << endl;
+                        ans++;
+                    }
+                    sleep(1);
+                }
+            }
+            sleep(1);
+            if (ans >= 3) {
+                cout << "ä½ èƒœåˆ©äº†" << endl;
+                break; 
+            }
+            else {
+                cout << "ä½ è¾“äº†" << endl;
+            }
+        }
+        else {
+            cout << "ç­‰å¾…å‘½ä»¤" << endl;
+        }
+    }
 }
